@@ -8,6 +8,17 @@ app.use(
     })
 );
 
+const db = require("./models");
+
+db.sequelize
+    .sync()
+    .then((res) => {
+        console.log("DB Synced ...");
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+
 app.listen(3000, () => {
     console.log("Server listening on port 3000");
 });
